@@ -1,0 +1,8 @@
+<!--検索結果-->
+<% if @users.present? %>
+  <!--検索がヒットした場合-->
+  <%= render 'public/users/index', users: @users %>
+  <!--検索がヒットしなかった場合-->
+<% else %>
+  <p>検索結果はありません</p>
+<% end %>

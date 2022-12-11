@@ -1,0 +1,16 @@
+<div>
+  <%= image_tag @post.user.get_profile_image %>
+  <%= @post.user.name %>
+  <%= @post.body %>
+  <%= render_with_hashtags(@post.hashbody) %>
+  <%= @post.user.prefacture_name%>
+  <p id="favorite_buttons_<%= @post.id %>">
+  <%= render "public/favorites/favorite", post: @post %>
+  </p>
+  <div class="new-comment">
+  <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
+  </div>
+  <div id="comments_area"> 
+  <%= render 'public/post_comments/post_comments', post: @post %>
+  </div>
+</div>

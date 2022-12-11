@@ -1,0 +1,19 @@
+<div class="container">
+  <div class ="row">
+    <div class="col-8">
+      <div class="d-flex justify-content-between">
+        <h5 class="text-left">ユーザー名:  <%= @user.name %></h5>
+        <h5 class="text-right">ユーザー名:  <%= current_user.name %></h5>
+      </div>
+      <div id = "js_chat_list"> 
+        <%= render 'public/chats/index', chats: @chats %>
+      </div>
+      <div id="errors">
+        <%= render "layouts/errors", model: @chat %>
+      </div> 
+      <div>
+        <%= render 'public/chats/form', chat: @chat %>
+      </div>　
+    </div>
+  </div>
+</div>

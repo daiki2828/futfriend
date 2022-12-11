@@ -1,0 +1,11 @@
+<% posts.each do |post| %>
+  <%= image_tag post.user.get_profile_image %>
+  <%= post.user.name %>
+  <%= post.body %>
+  <%= render_with_hashtags(post.hashbody) %>
+  <%= post.user.prefacture_name%>
+  <p id="favorite_buttons_<%= post.id %>">
+  <%= render "public/favorites/favorite", post: post %>
+  </p>
+  <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
+<% end %>

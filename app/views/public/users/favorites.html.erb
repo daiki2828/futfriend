@@ -1,0 +1,5 @@
+いいね一覧
+<% @favorite_posts.each do |post|%>
+<%= post.user.name %>
+<%= post.body %>
+<% end %>

@@ -1,0 +1,34 @@
+<h3>マイページ</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <th>プロフィール画像</th>
+      <td><%= image_tag @user.get_profile_image %></td>
+    </tr>
+    <tr>
+      <th>ユーザー名</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th>都道府県</th>
+      <td><%= @user.prefacture_name %></td>
+    </tr>
+    <tr>
+      <th>生年月日</th>
+      <td><%= @user.birth_year %>年<%= @user.birth_month %>月<%= @user.birth_day %>日</td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <th>プロフィール</th>
+      <td><%= @user.profile %></td>
+    </tr>
+    <tr>
+      <th>好きなチーム</th>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

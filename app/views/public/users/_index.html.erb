@@ -1,0 +1,23 @@
+<table class='table table-hover shadow-lg mt-3'>
+  <% users.each do |user| %>
+  <tbody class="border-bottom">
+    <tr>
+      <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
+    <tr>
+      <td><%= user.id %></td>
+    </tr>
+     <tr>
+      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <td><%= user.profile %></td>
+    </tr>
+    <tr>
+      <td><%= render "public/relationships/btn", user: user %></td>
+    </tr>
+    <tr>
+      <td><%= link_to 'Show', user_path(user) %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

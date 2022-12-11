@@ -1,0 +1,9 @@
+
+
+<%= search_form_for @q, url: search_posts_path do |f| %>
+  <!--name_contは、あいまい検索を指定-->
+  <%= f.text_field :body_cont %>
+  <%= f.submit "検索" %>
+<% end %>
+
+<%= render 'public/posts/index', posts: @posts %>

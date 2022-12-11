@@ -1,0 +1,49 @@
+<table>
+  <thead>
+    <tr>
+      <th>futfriend</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if user_signed_in? %>
+    <tr>
+      <td><%= link_to "プロフィール", user_path(current_user) %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "ホーム", posts_path %></td>
+    </tr>
+    <tr>
+      <td>検索</td>
+    </tr>
+    <tr>
+      <td>メッセージ</td>
+    </tr>
+    <tr>
+      <td><%= link_to"いいね一覧",favorites_user_path(current_user) %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></td>
+    </tr>
+    <% elsif admin_signed_in?%>
+    <tr>
+      <td><%= link_to "ユーザ一覧", admin_users_path %></td>
+    </tr>
+    <tr>
+      <td>投稿一覧</td>
+    </tr>
+    <tr>
+      <td><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></td>
+    </tr>
+    <% else %>
+    <tr>
+      <td><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "新規登録", new_user_registration_path %></td>
+    </tr>
+    <tr>
+      <td> <%= link_to "ログイン", new_user_session_path %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

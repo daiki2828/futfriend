@@ -59,3 +59,4 @@ gem 'devise'
 gem "pry-byebug"
 gem 'enum_help'
 gem 'jp_prefecture'
+gem 'ransack'

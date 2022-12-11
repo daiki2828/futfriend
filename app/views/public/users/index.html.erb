@@ -1,0 +1,6 @@
+<%= search_form_for @q, url: search_users_path do |f| %>
+  <!--name_contは、あいまい検索を指定-->
+  <%= f.text_field :name_cont %>
+  <%= f.submit "検索" %>
+<% end %>
+<%= render 'public/users/index', users: @users %>
