@@ -1,34 +1,19 @@
-<h3>マイページ</h3>
-
-<table>
-  <tbody>
-    <tr>
-      <th>プロフィール画像</th>
-      <td><%= image_tag @user.get_profile_image %></td>
-    </tr>
-    <tr>
-      <th>ユーザー名</th>
-      <td><%= @user.name %></td>
-    </tr>
-    <tr>
-      <th>都道府県</th>
-      <td><%= @user.prefacture_name %></td>
-    </tr>
-    <tr>
-      <th>生年月日</th>
-      <td><%= @user.birth_year %>年<%= @user.birth_month %>月<%= @user.birth_day %>日</td>
-    </tr>
-    <tr>
-      <th>メールアドレス</th>
-      <td><%= @user.email %></td>
-    </tr>
-    <tr>
-      <th>プロフィール</th>
-      <td><%= @user.profile %></td>
-    </tr>
-    <tr>
-      <th>好きなチーム</th>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-md-3"><%= image_tag @user.get_profile_image, style: "border-radius: 50%; width: 150px; height: 150px;" %></div>
+  <div class="col-md-5 ">
+      <div class="text-right">
+      <%= link_to edit_user_path(@user) do %>
+      <i class="fas fa-edit"></i>
+      <% end %>
+      </div>
+      <div class="text-center"><%= @user.name %></div>
+      <div class="text-center"><%= @user.prefacture_name %></div>
+      <div class="text-center"><i class="fas fa-birthday-cake"></i><%= @user.birth_year %>年<%= @user.birth_month %>月<%= @user.birth_day %>日</div>
+      <div class="text-center"><i class="fas fa-futbol"></i>好きなチーム：<%= @user.favorite_team %></div>
+      <div class="text-center"><%= link_to "followers #{@user.followings.count}人", user_followings_path(@user), class: "text-dark" %> <%= link_to "followers #{@user.followers.count}人", user_followers_path(@user), class: "text-dark" %></div>
+  </div>
+</div>
+<div class="offset-md-1 co-md-6 mt-2"><%= @user.profile %></div>
+<div class="col-md-8">
+  <%= render 'public/posts/index', posts: @user.posts %>
+</div>

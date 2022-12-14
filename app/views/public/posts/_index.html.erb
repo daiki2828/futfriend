@@ -1,11 +1,19 @@
 <% posts.each do |post| %>
-  <%= image_tag post.user.get_profile_image %>
-  <%= post.user.name %>
-  <%= post.body %>
-  <%= render_with_hashtags(post.hashbody) %>
-  <%= post.user.prefacture_name%>
-  <p id="favorite_buttons_<%= post.id %>">
-  <%= render "public/favorites/favorite", post: post %>
-  </p>
-  <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
+  <div class="border mt-2", style="border-radius: 30px;">
+    <div class="mt-1 ml-2">
+    <%= image_tag post.user.get_profile_image, style: "border-radius: 50%; width: 50px; height: 50px;" %>
+    <%= post.user.name %>
+    </div>
+    <div class="ml-2 mr-2">
+      <p><%= post.body %></p>
+      <p><%= render_with_hashtags(post.hashbody) %>
+      <p>場所 : <%= post.user.prefacture_name %></p>
+      <p id="favorite_buttons_<%= post.id %>">
+        <%= render "public/favorites/favorite", post: post %>　
+        <%= link_to post_path(post.id) do %>
+          <i class="fas fa-regular fa-comment"></i> <%= post.post_comments.count %>
+        <% end %>
+      </p>
+    </div>
+  </div>
 <% end %>
