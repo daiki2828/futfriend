@@ -1,0 +1,1 @@
+document.querySelector("#reply-form-<%= @post_comment.parent_id %>").innerHTML = ("<%= j(render 'public/post_comments/reply_form', post: @post, post_comment: @post_comment) %>");
