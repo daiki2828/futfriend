@@ -1,0 +1,7 @@
+<% if @posts.present? %>
+  <!--検索がヒットした場合-->
+  <%= render 'public/posts/index', posts: @posts %>
+  <!--検索がヒットしなかった場合-->
+<% else %>
+  <p>検索結果はありません</p>
+<% end %>

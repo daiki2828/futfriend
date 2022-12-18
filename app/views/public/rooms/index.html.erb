@@ -1,0 +1,18 @@
+<div class="col-md-8">
+  <h2>メッセージ</h2>
+  <table class="table table-borderless table-hover mt-3">
+    <% @another_user_rooms.each do |user_room| %>
+    <tbody>
+      <td><%= link_to chat_path(user_room.user_id) do %>
+            <%= image_tag user_room.user.get_profile_image, style: "border-radius: 50%; width: 50px; height: 50px;" %>
+           <% end %>
+      </td>
+      <td><%= link_to chat_path(user_room.user_id) do %>
+           <strong><span class="text-dark"><%= user_room.user.name %></strong><br>
+           <span class="text-secondary"><%= user_room.room.chats.order(created_at: :desc).take.try(:message) %></span>
+           <% end %>
+      </td>
+    </tbody>
+    <% end %>
+  </table>
+</div>

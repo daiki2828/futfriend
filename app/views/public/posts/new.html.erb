@@ -1,0 +1,14 @@
+<h3>新規投稿</h3>
+<%= form_with model:@post, url: posts_path, local:true do |f| %>
+  <div class="form-group">
+    <%= f.label :body, "投稿内容" %>
+    <%= f.text_field :body %>
+  </div>
+  <div class="form-group">
+    <%= f.label :hashbody, "ハッシュタグ" %>
+    <%= f.text_field :hashbody %>
+  </div>
+  <div class="action">
+    <%= f.submit "投稿", class: "btn btn-success" %>
+  </div>
+<% end %>

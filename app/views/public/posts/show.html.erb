@@ -1,0 +1,41 @@
+<div class="col-md-8">
+  <div class="border mt-2", style="border-radius: 30px;">
+    <div class="mt-1 ml-2">
+    <%= image_tag @post.user.get_profile_image, style: "border-radius: 50%; width: 50px; height: 50px;" %>
+    <strong><%= @post.user.name %></strong>
+    <% if @post.user == current_user %>
+      <span style="float: right;", class="mr-md-3 mr-2">
+      <%= link_to post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
+      </span>
+    <% end %>
+      <span class="mr-md-2 mr-2" style="float: right; font-size: 13px;" data-livestamp="<%=@post.created_at%>"></span>
+    </div>
+    <div class="ml-md-2 mr-md-2">
+      <p><%= @post.body %></p>
+      <p><%= render_with_hashtags(@post.hashbody) %>
+      <p>場所 : <%= @post.user.prefacture_name %></p>
+      <table class="ml-md-2" width="150">
+        <tbody>
+          <tr>
+            <td id="favorite_buttons_<%= @post.id %>"><%= render "public/favorites/favorite", post: @post %></td>
+            <td class="offset-md-1"><%= link_to post_path(@post.id), style: "color: black;" do %>
+                  <i class="far fa-comment"></i></i> <%= @post.post_comments.count %>
+                <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="col-md-8">
+  <div id="comments_area">
+    <%= render 'public/post_comments/post_comments', post: @post %>
+  </div>
+</div>
+<div class="col-md-8 mt-2">
+  <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
+</div>
+

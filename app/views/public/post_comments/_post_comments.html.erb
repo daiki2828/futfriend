@@ -1,0 +1,41 @@
+<%# byebug %>
+<% post.post_comments.order(created_at: :desc).each do |post_comment| %>
+  <% if !post_comment.parent_id %>
+  <div class="ml-3 border mt-2", style="border-radius: 20px;">
+    <div class="mt-1 ml-2">
+    <%= image_tag post_comment.user.get_profile_image, style: "border-radius: 50%; width: 50px; height: 50px;" %>
+    <strong><%= post_comment.user.name %></strong>
+    <span class="ml-md-3 ml-2" style="color: blue; font-size:15px;"><i class="fas fa-chevron-circle-right"></i><i class="fas fa-user"></i>: <%= post_comment.post.user.name %></span>
+    <% if post.user == current_user %>
+      <span style="float: right;", class="mr-md-3 mr-2">
+      <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", style: "border-radius: 20px;" do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
+      </span>
+    <% end %>
+      <span class="mr-md-2 mr-2" style="float: right; font-size: 10px;" data-livestamp="<%=post_comment.created_at%>"></span>
+    </div>
+    <div class="ml-md-2 mr-md-2">
+      <p><%= post_comment.comment %></p>
+    </div>
+    <div class="col-md-3">
+      <p class="mt-3 mb-0">
+      <% if user_signed_in? %>
+        <%= link_to '返信', new_post_post_comment_path(post, parent_id: post_comment.id), remote: true %>
+      <% end %>
+      <% if current_user == post_comment.user %>
+        <%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, remote: true %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+
+  <% if post_comment.replies.any? %>
+    <% post_comment.replies.each do |reply| %>
+      <%= render partial: 'public/post_comments/reply', locals: { reply: reply } %>
+    <% end %>
+  <% end %>
+
+  <div id="reply-form-<%= post_comment.id %>"></div>
+<% end %>
+

@@ -1,0 +1,21 @@
+<div class="card ml-5">
+  <div class="row">
+    <div class="col-md-1 m-auto">
+      <i class="fas fa-chevron-circle-right"></i>
+    </div>
+    <div class="col-md-2 mx-auto mt-3">
+      <%= link_to user_path(reply.user) do %>
+        <%= image_tag reply.user.get_profile_image, size: "30x30" %><br>
+        <%= reply.user.name %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <div class="card-body" style="font-size: 13px;">
+        <%= reply.comment %>
+      </div>
+    </div>
+    <div class="col-md-3 mt-4">
+      <span class="mr-md-2 mr-2" style="float: right; font-size: 10px;" data-livestamp="<%=reply.created_at%>"></span>
+    </div>
+  </div>
+</div>

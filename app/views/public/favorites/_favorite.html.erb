@@ -1,0 +1,13 @@
+<% if admin_signed_in? %>
+
+  <i class="fas fa-heart", aria-hidden="true", style="color: #FF1493;"></i><%= post.favorites.count %>
+
+<% elsif post.favorited_by?(current_user) %>
+  <%= link_to post_favorites_path(post), method: :delete, style: "color: #FF1493;", remote: true do %>
+    <i class="fas fa-heart", aria-hidden="true"></i><%= post.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to post_favorites_path(post), method: :post, style: "color: black;", remote: true do %>
+    <i class="far fa-heart"></i><%= post.favorites.count %>
+  <% end %>
+<% end %>

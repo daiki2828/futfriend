@@ -1,0 +1,18 @@
+<div class="col-md-8" style="height: 80vh; background: #8DB4E5; overflow: scroll">
+  <div class="row border-bottom sticky-top", style="background-color: #EEEEEE;">
+    <div class="col-md-3"><%= image_tag @user.get_profile_image, style: "border-radius: 50%; width: 50px; height: 50px;" %></div>
+    <div class="col-md-5 text-center mt-3">
+      <div><strong><%= @user.name %></strong></div>
+    </div>
+  </div>
+  
+  <div id = "js_chat_list">
+    <%= render 'public/chats/index', chats: @chats %>
+  </div>
+  <div id="errors">
+    <%= render "layouts/errors", model: @chat %>
+  </div>
+</div>
+<div class="col-md-8 offset-md-1">
+    <%= render 'public/chats/form', chat: @chat %>
+</div>

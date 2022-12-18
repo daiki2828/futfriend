@@ -1,0 +1,4 @@
+<!--$("#comments_area").html("<%#= j(render 'public/post_comments/post_comments', post: @post, post_comment: @post_comment) %>");-->
+$("#comments_area").html("<%= j(render 'public/post_comments/post_comments', post: @post) %>");
+<!--フォームを送信したあとにフォームの値を空にします-->
+$("textarea").val('');

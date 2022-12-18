@@ -6,11 +6,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/livestamp/1.1.0/livestamp.js"></script>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <div class="row mt-3">
+        <div class="col-md-3 co-12">
+          <div class="sticky-top offset-md-2">
+            <%= render "layouts/sidebar" %>
+          </div>
+        </div>
+        <div class="col-md-9 col-12", style="border-left: thick double #0000FF;">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>

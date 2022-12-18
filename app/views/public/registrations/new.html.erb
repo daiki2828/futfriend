@@ -1,0 +1,55 @@
+
+<div class='signup text-bottom'>
+  <div class="signup-triangle"></div>
+  <h2 class="signup-header">Sign up</h2>
+  <div class="signup-container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :name, "ユーザー名" %><br />
+      <%= f.text_field :name, class: "form-control", style: "width: 200px;" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :prefacture_name, "都道府県" %><br />
+      <%= f.text_field :prefacture_name, class: "form-control", style: "width: 200px;" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :birth_day, "生年月日" %>
+      <div class="d-flex align-text-bottom">
+      <%= f.text_field :birth_year, class: "form-control", style: "width: 100px;", :placeholder => "西暦" %>　
+      <%= f.text_field :birth_month, class: "form-control", style: "width: 50px;", :placeholder => "月" %>　
+      <%= f.text_field :birth_day, class: "form-control", style: "width: 50px;", :placeholder => "日" %>　
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", style: "width: 200px;" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %>桁以上)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control", style: "width: 200px;" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", style: "width: 200px;" %>
+    </div>
+
+    <div class="actions mt-3">
+      <%= f.submit "Sign up", style: "background: #FF9933; border-color: transparent; color: #fff; cursor: pointer;", class: "form-control"  %>
+    </div>
+    <% end %>
+    
+    <h4 class="mt-4">既に登録済みの方</h4>
+      <%= link_to "こちら", new_user_session_path %>　からログインしてください。
+  </div>
+</div>
+
