@@ -28,6 +28,17 @@ class Public::UsersController < ApplicationController
       render "edit"
     end
   end 
+  
+  def quit
+  end 
+  
+  def withdraw
+    @user = current_user
+    @user.update(user_status: "自己退会")
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
 
   def favorites
     @user = User.find(params[:id])
@@ -38,7 +49,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile, :profile_image, :prefacture_name)
+    params.require(:user).permit(:name, :profile, :profile_image, :prefacture_name, :user_status)
   end
   
   def ensure_correct_user

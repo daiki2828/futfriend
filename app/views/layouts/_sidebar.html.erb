@@ -16,7 +16,7 @@
       <td><%= link_to "ユーザー検索", users_path %></td>
     </tr>
     <tr>
-      <td>メッセージ</td>
+      <td><%= link_to "メッセージ", rooms_path %></td>
     </tr>
     <tr>
       <td><%= link_to"いいね一覧",favorites_user_path(current_user) %></td>
@@ -29,7 +29,7 @@
       <td><%= link_to "ユーザ一覧", admin_users_path %></td>
     </tr>
     <tr>
-      <td>投稿一覧</td>
+      <td><%= link_to "投稿一覧", admin_posts_path %></td>
     </tr>
     <tr>
       <td><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></td>

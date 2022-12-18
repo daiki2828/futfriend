@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
-  
+
 
   devise_for :users, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
 
-  devise_for :admins,  skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin,  skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
   devise_scope :user do
@@ -40,11 +40,13 @@ scope module: :public do
     end
   end
   resources :chats, only: [:show, :create]
+  resources :rooms, only: [:index]
 end
 
-namespace :admin do
-  get "/" => "homes#top"
-  resources :users, only: [:index, :show, :edit, :update]
-end
+  namespace :admin do
+    get "/" => "homes#top"
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :posts, only: [:index, :show, :destroy]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

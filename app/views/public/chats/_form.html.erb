@@ -1,5 +1,8 @@
 <%= form_with model: chat, local: false do |f| %>
-  <%= f.text_field :message, class:'message' %>  
+  <%= f.text_field :message, class:'message col-md-8' %>  
   <%= f.hidden_field :room_id %>
-  <%= f.submit "送信" %>
+  <%= button_tag type: "submit", class: "btn btn-info" do %>
+    <i class="fas fa-paper-plane"></i>
+  <% end %>
 <% end %>
+

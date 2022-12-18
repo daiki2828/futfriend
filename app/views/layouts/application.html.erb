@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/livestamp/1.1.0/livestamp.js"></script>
-    
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  
+
   </head>
 
   <body>
@@ -23,7 +23,7 @@
             <%= render "layouts/sidebar" %>
           </div>
         </div>
-        <div class="col-md-8 col-12", style="border-left: thick double #0000FF;">
+        <div class="col-md-9 col-12", style="border-left: thick double #0000FF;">
           <%= yield %>
         </div>
       </div>

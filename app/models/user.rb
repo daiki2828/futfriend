@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   validates :user_status, presence: true
 
-  enum user_status: { "有効": 0, "自己退会": 1, "強制退会": 2 }
+  enum user_status: { "有効": 0, "自己退会": 1, "強制退会": 2, "ゲストログイン": 3 }
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
@@ -47,6 +47,10 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
     end
+  end
+  
+  def active_for_authentication?
+    super && (self.user_status == "有効")
   end
 
 end
