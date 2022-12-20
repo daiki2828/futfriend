@@ -1,28 +1,47 @@
 <table class="table table-borderless">
   <thead>
     <tr>
-      <th>futfriend</th>
+      <th class="text-center">futfriend</th>
     </tr>
   </thead>
   <tbody>
     <% if user_signed_in? %>
     <tr>
-      <td><%= link_to "プロフィール", user_path(current_user) %></td>
+      <td class="text-center"><%= link_to user_path(current_user), style: "color: black;" do %>
+            <i class="fas fa-user-alt"></i>
+          <% end %>
+      </td>
     </tr>
     <tr>
-      <td><%= link_to "ホーム", posts_path %></td>
+      <td class="text-center"><%= link_to posts_path, style: "color: black;" do %>
+            <i class="fas fa-home"></i>
+          <% end %>
+      </td>
     </tr>
     <tr>
-      <td><%= link_to "ユーザー検索", users_path %></td>
+      <td class="text-center"><%= link_to users_path, style: "color: black;" do %>
+            <i class="fas fa-users"></i><i class="fas fa-search"></i>
+           <% end %>
+      </td>
     </tr>
     <tr>
-      <td><%= link_to "メッセージ", rooms_path %></td>
+      <td class="text-center"><%= link_to rooms_path, style: "color: black;" do %>
+            <i class="fas fa-comments"></i>
+          <% end %>
+      </td>
     </tr>
     <tr>
-      <td><%= link_to"いいね一覧",favorites_user_path(current_user) %></td>
+      <td class="text-center"><%= link_to favorites_user_path(current_user), style: "color: black;" do %>
+            <i class="fas fa-thumbs-up"></i> <i class="fas fa-thumbs-up"></i> <i class="fas fa-thumbs-up"></i>
+          <% end %>
+      </td>
     </tr>
     <tr>
-      <td><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></td>
+      <td class="text-center">
+          <%= link_to destroy_user_session_path, method: :delete, style: "color: black;"  do %>
+              <i class="fas fa-sign-out-alt"></i>
+          <% end %>
+      </td>
     </tr>
     <% elsif admin_signed_in?%>
     <tr>
@@ -36,13 +55,13 @@
     </tr>
     <% else %>
     <tr>
-      <td><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %></td>
+      <td class="text-center"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %></td>
     </tr>
     <tr>
-      <td><%= link_to "新規登録", new_user_registration_path %></td>
+      <td class="text-center"><%= link_to "新規登録", new_user_registration_path %></td>
     </tr>
     <tr>
-      <td> <%= link_to "ログイン", new_user_session_path %></td>
+      <td class="text-center"> <%= link_to "ログイン", new_user_session_path %></td>
     </tr>
     <% end %>
   </tbody>

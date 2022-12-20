@@ -9,10 +9,6 @@
     <% end %>
 </div>
 <% end %>
-    <ul>
-        <% @post.each do |t| %>
-        <li>
-            <%= t.body %>
-        </li>    
-        <% end %>
-    </ul>
+<div class="col-md-8">
+ <%= render 'public/posts/index', posts: @post %>
+</div>
