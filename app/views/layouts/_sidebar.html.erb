@@ -1,45 +1,58 @@
 <table class="table table-borderless">
   <thead>
     <tr>
-      <th class="text-center">futfriend</th>
+      <th class="text-left">
+        <%= link_to posts_path, class: "btn" do %>
+          <%= image_tag'logo.jpg', size: "120x100" %>
+         <% end %>
+      </th>
     </tr>
   </thead>
   <tbody>
     <% if user_signed_in? %>
     <tr>
-      <td class="text-center"><%= link_to user_path(current_user), style: "color: black;" do %>
-            <i class="fas fa-user-alt"></i>
+      <td class="text-left">
+        <%= link_to notifications_path, style: "color: black;" do %>
+            <i class="fas fa-bell"></i>
+            <% if unchecked_notifications.any? %>
+              <i class="fas fa-exclamation" style="color: red;"></i>
+            <% end %>
+            : 通知
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-left"><%= link_to user_path(current_user), style: "color: black;" do %>
+            <i class="fas fa-user-alt"></i>: my_page
           <% end %>
+
       </td>
     </tr>
     <tr>
-      <td class="text-center"><%= link_to posts_path, style: "color: black;" do %>
-            <i class="fas fa-home"></i>
-          <% end %>
+      <td class="text-left">
+        <%= link_to users_path, style: "color: black;" do %>
+          <i class="fas fa-users"></i><i class="fas fa-search"></i>: users
+        <% end %>
       </td>
     </tr>
     <tr>
-      <td class="text-center"><%= link_to users_path, style: "color: black;" do %>
-            <i class="fas fa-users"></i><i class="fas fa-search"></i>
-           <% end %>
+      <td class="text-left">
+        <%= link_to rooms_path, style: "color: black;" do %>
+          <i class="fas fa-mail-bulk"></i>: DM
+        <% end %>
       </td>
     </tr>
     <tr>
-      <td class="text-center"><%= link_to rooms_path, style: "color: black;" do %>
-            <i class="fas fa-comments"></i>
-          <% end %>
+      <td class="text-left">
+        <%= link_to favorites_user_path(current_user), style: "color: black;" do %>
+          <i class="fas fa-thumbs-up"></i>: いいね
+        <% end %>
       </td>
     </tr>
     <tr>
-      <td class="text-center"><%= link_to favorites_user_path(current_user), style: "color: black;" do %>
-            <i class="fas fa-thumbs-up"></i> <i class="fas fa-thumbs-up"></i> <i class="fas fa-thumbs-up"></i>
-          <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-center">
+      <td class="text-left">
           <%= link_to destroy_user_session_path, method: :delete, style: "color: black;"  do %>
-              <i class="fas fa-sign-out-alt"></i>
+            <i class="fas fa-sign-out-alt"></i>:　Log out
           <% end %>
       </td>
     </tr>
@@ -55,13 +68,13 @@
     </tr>
     <% else %>
     <tr>
-      <td class="text-center"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %></td>
+      <td class="text-left"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %></td>
     </tr>
     <tr>
-      <td class="text-center"><%= link_to "新規登録", new_user_registration_path %></td>
+      <td class="text-left"><%= link_to "新規登録", new_user_registration_path %></td>
     </tr>
     <tr>
-      <td class="text-center"> <%= link_to "ログイン", new_user_session_path %></td>
+      <td class="text-left"> <%= link_to "ログイン", new_user_session_path %></td>
     </tr>
     <% end %>
   </tbody>

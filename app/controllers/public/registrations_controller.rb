@@ -64,6 +64,6 @@ before_action :configure_permitted_parameters
   private
     
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :prefacture_name, :birth_year, :birth_month, :birth_day, ])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :prefecture_code, :birth_year, :birth_month, :birth_day, ])
   end
 end

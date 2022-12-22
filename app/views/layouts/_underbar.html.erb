@@ -1,0 +1,52 @@
+<table class="table table-borderless col-12 mb-0" style="background-color: #66FFCC;">
+  <tbody>
+    <% if user_signed_in? %>
+    <tr>
+      <td class="text-center">
+          <%= link_to user_path(current_user), style: "color: black;" do %>
+            <i class="fas fa-user-alt"></i>
+          <% end %>
+      </td>
+      <td class="text-center">
+          <%= link_to posts_path, style: "color: black;" do %>
+            <i class="fas fa-home"></i>
+          <% end %>
+      </td>
+      <td class="text-center">
+          <%= link_to users_path, style: "color: black;" do %>
+            <i class="fas fa-users"></i><i class="fas fa-search"></i>
+           <% end %>
+      </td>
+      <td class="text-center">
+          <%= link_to favorites_user_path(current_user), style: "color: black;" do %>
+            <i class="fas fa-thumbs-up"></i>
+          <% end %>
+      </td>
+    </tr>
+    <% elsif admin_signed_in?%>
+    <tr>
+      <td class="text-center">
+        <%= link_to admin_users_path, style: "color: black;" do %>
+          <i class="fas fa-users"></i>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">
+        <%= link_to admin_posts_path, style: "color: black;" do %>
+          <i class="fas fa-home-alt"></i>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">
+        <%= link_to destroy_admin_session_path, method: :delete, style: "color: black;" do %>
+          <i class="fas fa-sign-out"></i>
+        <% end %>
+      </td>
+    </tr>
+    <% else %>
+
+    <% end %>
+  </tbody>
+</table>

@@ -1,4 +1,5 @@
 class Public::ChatsController < ApplicationController
+  before_action :authenticate_user!
   before_action :following_check, only: [:show]
 
   def show

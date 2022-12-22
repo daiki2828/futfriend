@@ -1,15 +1,15 @@
 <div class="col-md-8">
   <div class="row justify-content-between">
-    <div class="col-md-7">
+    <div class="col-md-7 col-12">
       <%= search_form_for @q, url: search_posts_path do |f| %>
     <!--name_contは、あいまい検索を指定-->
-        <%= f.text_field :body_cont, class: "col-md-8 offset-md-1" %>
+        <%= f.text_field :body_cont, class: "col-md-8 col-10 offset-md-1" %>
         <%= button_tag type: "submit", class: "btn" do %>
           <i class="fas fa-search-plus"></i>
         <% end %>
       <% end %>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-1 d-none d-sm-block">
       <%= link_to new_post_path, style: "color: black;" do %>
         <i class="far fa-plus-square"></i>
       <% end %>

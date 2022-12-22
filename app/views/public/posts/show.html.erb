@@ -15,7 +15,7 @@
     <div class="ml-md-2 mr-md-2">
       <p><%= @post.body %></p>
       <p><%= render_with_hashtags(@post.hashbody) %>
-      <p>場所 : <%= @post.user.prefacture_name %></p>
+      <p>場所 : <%= @post.user.prefecture.name %></p>
       <table class="ml-md-2" width="150">
         <tbody>
           <tr>

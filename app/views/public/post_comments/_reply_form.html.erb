@@ -1,5 +1,5 @@
 <div class="ml-5">
-<%= form_with(model: [@post, @post_comment]) do |f| %>
+<%= form_with model: [@post, @post_comment], local: false do |f| %>
   <%= f.hidden_field :parent_id %>
   <div class="form-group">
     <%= f.text_area :comment, class: 'form-control', placeholder: "返信をここに" %>

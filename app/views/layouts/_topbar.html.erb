@@ -1,0 +1,49 @@
+<table class="table table-borderless mt-0">
+  <tbody>
+    <% if user_signed_in? %>
+    <tr>
+      <td class="text-center">
+        <%= image_tag'logo.jpg', size: "80x80" %>
+      </td>
+      <td class="text-center">
+        <%= link_to notifications_path, style: "color: black;" do %>
+            <i class="fas fa-bell"></i>
+            <% if unchecked_notifications.any? %>
+              <i class="fas fa-exclamation" style="color: red;"></i>
+            <% end %>
+        <% end %>
+      </td>
+      <td class="text-center">
+        <%= link_to new_post_path, style: "color: black;" do %>
+          <i class="far fa-plus-square"></i>
+        <% end %>
+      </td>
+      <td class="text-center">
+        <%= link_to rooms_path, style: "color: black;" do %>
+          <i class="fas fa-mail-bulk"></i>
+        <% end %>
+      </td>
+      <td class="text-center">
+        <%= link_to destroy_user_session_path, method: :delete, style: "color: black;"  do %>
+            <i class="fas fa-sign-out-alt"></i>
+        <% end %>
+      </td>
+    </tr>
+    <% elsif admin_signed_in?%>
+    <tr>
+      <td class="text-center">
+        <%= image_tag'logo.jpg', size: "80x80" %>
+      </td>
+    </tr>
+    <% else %>
+    <tr>
+      <td class="text-center">
+        <%= image_tag'logo.jpg', size: "80x80" %>
+      </td>
+      <td class="text-center"><%= link_to 'guest', users_guest_sign_in_path, method: :post, style: "font-size: 12px;" %></td>
+      <td class="text-center"><%= link_to "新規登録", new_user_registration_path, style: "font-size: 12px;" %></td>
+      <td class="text-center"> <%= link_to "ログイン", new_user_session_path, style: "font-size: 12px;" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

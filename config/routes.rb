@@ -41,6 +41,7 @@ scope module: :public do
   end
   resources :chats, only: [:show, :create]
   resources :rooms, only: [:index]
+  resources :notifications, only: [:index]
 end
 
   namespace :admin do

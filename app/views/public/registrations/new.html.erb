@@ -12,8 +12,8 @@
     </div>
 
     <div class="field">
-      <%= f.label :prefacture_name, "都道府県" %><br />
-      <%= f.text_field :prefacture_name, class: "form-control", style: "width: 200px;" %>
+      <%= f.label :prefecture_code, "都道府県" %><br />
+      <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name %>
     </div>
 
     <div class="field">

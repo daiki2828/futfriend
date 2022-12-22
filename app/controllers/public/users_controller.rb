@@ -49,7 +49,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile, :profile_image, :prefacture_name, :user_status)
+    params.require(:user).permit(:name, :profile, :profile_image, :prefecture_code, :user_status)
   end
   
   def ensure_correct_user

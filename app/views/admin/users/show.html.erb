@@ -10,7 +10,7 @@
       <div class="text-center"><%= @user.id %></div>
       <div class="text-center"><%= @user.name %></div>
       <div class="text-center"><%= @user.email %></div>
-      <div class="text-center"><%= @user.prefacture_name %></div>
+      <div class="text-center"><%= @user.prefecture.name %></div>
       <div class="text-center"><i class="fas fa-birthday-cake"></i><%= @user.birth_year %>年<%= @user.birth_month %>月<%= @user.birth_day %>日</div>
       <div class="text-center"><i class="fas fa-futbol"></i>好きなチーム：<%= @user.favorite_team %></div>
       <div class="text-center"><%= link_to "follow #{@user.followings.count}人", user_followings_path(@user), class: "text-dark", style: "font-size: 12px;" %> <%= link_to "followers #{@user.followers.count}人", user_followers_path(@user), class: "text-dark", style: "font-size: 12px;" %></div>

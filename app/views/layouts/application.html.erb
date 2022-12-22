@@ -19,7 +19,12 @@
   <body>
     <div class="container">
       <div class="row mt-3">
-        <div class="col-md-3 co-12">
+        <div class="col-12 d-block d-sm-none">
+          <div class="sticky-top">
+            <%= render "layouts/topbar" %>
+          </div>
+        </div>
+        <div class="col-md-3 d-none d-sm-block">
           <div class="sticky-top offset-md-2">
             <%= render "layouts/sidebar" %>
           </div>
@@ -29,6 +34,10 @@
         </div>
       </div>
     </div>
-
   </body>
+  <div class="col-12 d-block d-sm-none">
+      <div class="sticky-bottom fixed-bottom">
+        <%= render "layouts/underbar" %>
+      </div>
+  </div>
 </html>

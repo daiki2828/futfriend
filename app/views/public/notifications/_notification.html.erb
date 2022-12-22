@@ -1,0 +1,13 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+
+<div class="user-view clearfix mt-2">
+  <%= link_to user_path(visitor) do %>
+    <%=  image_tag notification.visitor.get_profile_image, style: "border-radius: 50%; width: 50px; height: 50px;" %>
+  <% end %>
+  <%== notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
+  <br>
+  <% if !@post_comment.nil? %>
+    <p class="moderate-font"><%= @post_comment %></p>
+  <% end %>
+</div>
