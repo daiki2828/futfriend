@@ -8,8 +8,8 @@
            <% end %>
       </td>
       <td><%= link_to chat_path(user_room.user_id) do %>
-           <strong><span class="text-dark"><%= user_room.user.name %></strong><br>
-           <span class="text-secondary"><%= user_room.room.chats.order(created_at: :desc).take.try(:message) %></span>
+           <strong><div class="text-dark"><%= user_room.user.name %></div></strong>
+           <div class="text-secondary"><%= user_room.room.chats.order(created_at: :desc).take.try(:message).truncate(10)  %></div>
            <% end %>
       </td>
     </tbody>

@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
   before_action :search
-  
+
   def search
     @q = User.ransack(params[:q])
     # distinct: trueは重複したデータを除外
@@ -10,28 +10,28 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-   @users = User.all
+   @users = User.where(user_status: '有効')
   end
 
   def show
     @user = User.find(params[:id])
   end
-  
+
   def edit
     @user = User.find(params[:id])
-  end 
-  
+  end
+
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: "You have updated user successfully."
+      redirect_to user_path(@user), notice: "編集しました"
     else
       render "edit"
     end
-  end 
-  
+  end
+
   def quit
-  end 
-  
+  end
+
   def withdraw
     @user = current_user
     @user.update(user_status: "自己退会")
@@ -45,13 +45,13 @@ class Public::UsersController < ApplicationController
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
   end
-  
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile, :profile_image, :prefecture_code, :user_status)
+    params.require(:user).permit(:name, :profile, :profile_image, :prefecture_code, :user_status, :favorite_team)
   end
-  
+
   def ensure_correct_user
     @user = User.find(params[:id])
     unless @user == current_user

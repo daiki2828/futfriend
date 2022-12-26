@@ -25,11 +25,13 @@
           </div>
         </div>
         <div class="col-md-3 d-none d-sm-block">
-          <div class="sticky-top offset-md-2">
+          <div class="sticky-top offset-md-2" style="border-right: thick double #0000FF;">
             <%= render "layouts/sidebar" %>
           </div>
         </div>
-        <div class="col-md-9 col-12", style="border-left: thick double #0000FF;">
+        <div class="col-md-9 col-12">
+          <%= flash[:error] %>
+          <%= flash[:notice] %>
           <%= yield %>
         </div>
       </div>

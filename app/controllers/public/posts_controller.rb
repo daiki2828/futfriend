@@ -2,8 +2,8 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :search
-   
-   
+
+
   def hashtag
     if params[:name].nil?
       @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
@@ -15,7 +15,7 @@ class Public::PostsController < ApplicationController
       @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
     end
   end
-      
+
 
   def index
     @posts = Post.all
@@ -41,12 +41,12 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
   end
-  
+
   def search
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true)
+    @posts = @q.result(distinct: true).order(id: :desc)
   end
-  
+
   def destroy
     @post.destroy
     redirect_to posts_path
@@ -57,7 +57,7 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:body, :hashbody)
   end
-  
+
   def ensure_correct_user
     @post = Post.find(params[:id])
     unless @post.user == current_user

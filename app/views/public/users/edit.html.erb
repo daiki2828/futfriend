@@ -3,7 +3,7 @@
   <%= form_with model:@user, local:true do |f| %>
       <%= render 'layouts/errors', model: @user %>
       <div class="form-group">
-        <%= f.label :name %>
+        <%= f.label :name, "ユーザーネーム" %>
         <%= f.text_field :name, class: "form-control col-md-4" %>
       </div>
       <div class="form-group">
@@ -11,8 +11,12 @@
         <%= f.file_field :profile_image, class: "form-control-file", accept: 'image/*' %>
        </div>
        <div class="form-group">
-        <%= f.label :profile %>
+        <%= f.label :profile, "プロフィール" %>
         <%= f.text_area :profile, class: "form-control col-md-6" %>
+       </div>
+       <div class="form-group">
+        <%= f.label :favorite_team, "好きなチーム" %>
+        <%= f.text_field :favorite_team, class: "form-control col-md-4" %>
        </div>
        <div class="form-group">
         <%= f.label :prefecture_code, "都道府県" %>

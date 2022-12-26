@@ -27,6 +27,11 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  validates :name, presence: true
+  validates :profile, length: {maximum: 200}
+  validates :birth_year, length: { is: 4 }
+  validates :birth_month, length: { is: 2 }
+  validates :birth_day, length: { is: 2 }
   validates :user_status, presence: true
 
   enum user_status: { "有効": 0, "自己退会": 1, "強制退会": 2, "ゲストログイン": 3 }

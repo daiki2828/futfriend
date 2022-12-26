@@ -12,7 +12,7 @@
     <% if user_signed_in? %>
     <tr>
       <td class="text-left">
-        <%= link_to notifications_path, style: "color: black;" do %>
+        <%= link_to notifications_path, style: "color: black;", class: "btn" do %>
             <i class="fas fa-bell"></i>
             <% if unchecked_notifications.any? %>
               <i class="fas fa-exclamation" style="color: red;"></i>
@@ -22,7 +22,7 @@
       </td>
     </tr>
     <tr>
-      <td class="text-left"><%= link_to user_path(current_user), style: "color: black;" do %>
+      <td class="text-left"><%= link_to user_path(current_user), style: "color: black;", class: "btn" do %>
             <i class="fas fa-user-alt"></i>: my_page
           <% end %>
 
@@ -30,51 +30,51 @@
     </tr>
     <tr>
       <td class="text-left">
-        <%= link_to users_path, style: "color: black;" do %>
+        <%= link_to users_path, style: "color: black;", class: "btn" do %>
           <i class="fas fa-users"></i><i class="fas fa-search"></i>: users
         <% end %>
       </td>
     </tr>
     <tr>
       <td class="text-left">
-        <%= link_to rooms_path, style: "color: black;" do %>
+        <%= link_to rooms_path, style: "color: black;", class: "btn" do %>
           <i class="fas fa-mail-bulk"></i>: DM
         <% end %>
       </td>
     </tr>
     <tr>
       <td class="text-left">
-        <%= link_to favorites_user_path(current_user), style: "color: black;" do %>
+        <%= link_to favorites_user_path(current_user), style: "color: black;", class: "btn" do %>
           <i class="fas fa-thumbs-up"></i>: いいね
         <% end %>
       </td>
     </tr>
     <tr>
       <td class="text-left">
-          <%= link_to destroy_user_session_path, method: :delete, style: "color: black;"  do %>
+          <%= link_to destroy_user_session_path, method: :delete, style: "color: black;", class: "btn"  do %>
             <i class="fas fa-sign-out-alt"></i>:　Log out
           <% end %>
       </td>
     </tr>
     <% elsif admin_signed_in?%>
     <tr>
-      <td><%= link_to "ユーザ一覧", admin_users_path %></td>
+      <td><%= link_to "ユーザ一覧", admin_users_path, class: "btn" %></td>
     </tr>
     <tr>
-      <td><%= link_to "投稿一覧", admin_posts_path %></td>
+      <td><%= link_to "投稿一覧", admin_posts_path, class: "btn" %></td>
     </tr>
     <tr>
-      <td><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></td>
+      <td><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn" %></td>
     </tr>
     <% else %>
     <tr>
-      <td class="text-left"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %></td>
+      <td class="text-left"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn" %></td>
     </tr>
     <tr>
-      <td class="text-left"><%= link_to "新規登録", new_user_registration_path %></td>
+      <td class="text-left"><%= link_to "新規登録", new_user_registration_path, class: "btn" %></td>
     </tr>
     <tr>
-      <td class="text-left"> <%= link_to "ログイン", new_user_session_path %></td>
+      <td class="text-left"> <%= link_to "ログイン", new_user_session_path, class: "btn" %></td>
     </tr>
     <% end %>
   </tbody>
