@@ -42,4 +42,4 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 使用検討中です。
+- <a href="https://jp.freepik.com/free-vector/particle-ball-composition_1042098.htm#query=football&position=2&from_view=keyword">著作者：starline</a>／出典：Freepik
