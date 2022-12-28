@@ -1,14 +1,6 @@
-<div class="col-md-8">
-  <div class="col-md-7">
-    <%= search_form_for @q, url: search_users_path do |f| %>
-  <!--name_contは、あいまい検索を指定-->
-      <%= f.text_field :name_cont, class: "col-md-8 offset-md-1" %>
-      <%= button_tag type: "submit", class: "btn" do %>
-        <i class="fas fa-search-plus"></i>
-      <% end %>
-    <% end %>
-  </div>
+<div>
+  <%= render 'public/users/search_form', q: @q %>
 </div>
 <div>
- <%= render 'public/users/index', users: @users %>
+  <%= render 'public/users/index', users: @users %>
 </div>

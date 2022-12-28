@@ -61,6 +61,10 @@ gem 'devise'
 gem 'enum_help'
 gem 'jp_prefecture'
 gem 'ransack'
+gem 'kaminari'
+
+gem 'hirb'
+gem 'hirb-unicode'
 
 gem 'dotenv-rails'
 group :production do

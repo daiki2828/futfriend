@@ -1,8 +1,6 @@
-<div class="col-md-8">
-  <h2>フォロー中</h2>
-    <% if @users.exists? %>
-      <%= render 'public/users/index', users: @users %>
-    <% else %>
-      <p>ユーザーはいません</p>
-    <% end %>
-</div>
+<h2>フォロー中</h2>
+<% if @users.exists? %>
+  <%= render 'public/users/index', users: @users %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
