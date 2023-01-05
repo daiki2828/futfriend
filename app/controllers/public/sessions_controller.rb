@@ -38,7 +38,7 @@ class Public::SessionsController < Devise::SessionsController
   def reject_customer
     @user = User.find_by(email: params[:user][:email].downcase)
     if @user
-      if (@user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == "自己退会") | @user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == "強制退会"))
+      if @user.valid_password?(params[:user][:password]) && !@user.active_for_authentication?
         flash[:error] = "退会済みです。"
         redirect_to new_user_session_path
       end

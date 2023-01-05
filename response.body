@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/ec2-user/environment/futfriend/lib/vision.rb:39 Vision.image_analysis:
+
+    [1;34m34[0m:       request[[31m[1;31m'[0m[31mContent-Type[1;31m'[0m[31m[0m] = [31m[1;31m'[0m[31mapplication/json[1;31m'[0m[31m[0m
+    [1;34m35[0m:       response = https.request(request, params)
+    [1;34m36[0m:       response_body = [1;34;4mJSON[0m.parse(response.body)
+    [1;34m37[0m:       binding.pry
+    [1;34m38[0m:       [1;34m# APIレスポンス出力[0m
+ => [1;34m39[0m:       [32mif[0m response_body[[31m[1;31m'[0m[31mresponses[1;31m'[0m[31m[0m][[1;34m0[0m][[31m[1;31m'[0m[31msafeSearchAnnotation[1;31m'[0m[31m[0m].to_h.values.include?([33m:LIKELY[0m) || response_body[[31m[1;31m'[0m[31mresponses[1;31m'[0m[31m[0m][[1;34m0[0m][[31m[1;31m'[0m[31msafeSearchAnnotation[1;31m'[0m[31m[0m].to_h.values.include?([33m:VERY_LIKELY[0m)
+    [1;34m40[0m:         [32mreturn[0m [1;36mfalse[0m
+    [1;34m41[0m:       [32melse[0m
+    [1;34m42[0m:         [32mreturn[0m [1;36mtrue[0m
+    [1;34m43[0m:       [32mend[0m
+    [1;34m44[0m: 
+

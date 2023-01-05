@@ -22,10 +22,26 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to user_path(@user), notice: "編集しました"
+      # 画像が編集された場合
+    if params[:user][:profile_image].present?
+      # パラメーター(画像)を「tempfile」として開いて変数に代入
+      #profile_image = File.open(params[:user][:profile_image].tempfile)
+      # Cloud Vision APIで画像分析して、分析結果を変数に代入
+      result = Vision.image_analysis(@user.profile_image)
+      
     else
-      render "edit"
+      # 画像が編集されてない場合は「true」を代入
+      result = true
+    end
+
+
+    # 解析結果によって条件分岐
+    if result == true
+      @user.update(user_params)
+      redirect_to user_path(@user), notice: "編集しました"
+    elsif result == false
+      flash[:notice] = '画像が不適切です'
+      render 'edit'
     end
   end
 
