@@ -60,7 +60,7 @@ class User < ApplicationRecord
   end
 
   def active_for_authentication?
-    super && (self.user_status == "有効") || super && (self.user_status == "ゲストログイン")
+    self.user_status == "有効" || self.user_status == "ゲストログイン"
   end
 
   def create_notification_follow!(current_user)

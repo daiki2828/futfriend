@@ -62,6 +62,8 @@ gem 'enum_help'
 gem 'jp_prefecture'
 gem 'ransack'
 gem 'kaminari'
+gem 'dotenv-rails'
+gem 'google-cloud-vision'
 
 gem 'hirb'
 gem 'hirb-unicode'
