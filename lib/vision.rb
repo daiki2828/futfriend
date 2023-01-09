@@ -37,8 +37,7 @@ module Vision
       response_body = JSON.parse(response.body)
 
       # APIレスポンス出力
-      if response_body['responses'][0]['safeSearchAnnotation'].to_h.values.include?("LIKELY")\
-        || response_body['responses'][0]['safeSearchAnnotation'].to_h.values.include?("VERY_LIKELY")
+      if response_body['responses'][0]['safeSearchAnnotation'].to_h.values.include?("LIKELY") || response_body['responses'][0]['safeSearchAnnotation'].to_h.values.include?("VERY_LIKELY")
         return false
       else
         return true
