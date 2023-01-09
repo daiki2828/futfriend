@@ -25,16 +25,13 @@ class Public::UsersController < ApplicationController
       # 画像が編集された場合
     if params[:user][:profile_image].present?
       # パラメーター(画像)を「tempfile」として開いて変数に代入
-      #profile_image = File.open(params[:user][:profile_image].tempfile)
+      profile_image = File.open(params[:user][:profile_image].tempfile)
       # Cloud Vision APIで画像分析して、分析結果を変数に代入
-      result = Vision.image_analysis(@user.profile_image)
-      
+      result = Vision.image_analysis(profile_image)
     else
       # 画像が編集されてない場合は「true」を代入
       result = true
     end
-
-
     # 解析結果によって条件分岐
     if result == true
       @user.update(user_params)

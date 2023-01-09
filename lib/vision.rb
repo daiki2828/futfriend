@@ -9,8 +9,9 @@ module Vision
       # APIのURL作成
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV['GOOGLE_API_KEY']}"
       # 画像をbase64にエンコード
-      dir_tree = profile_image.key.scan(/.{1,#{2}}/)
-      base64_image = Base64.encode64(open("#{Rails.root}/public/uploads/#{dir_tree[0]}/#{dir_tree[1]}/#{profile_image.key}").read)
+      #dir_tree = profile_image.key.scan(/.{1,#{2}}/)
+      #base64_image = Base64.encode64(open("#{Rails.root}/public/uploads/#{dir_tree[0]}/#{dir_tree[1]}/#{profile_image.key}").read)
+      base64_image = Base64.encode64(profile_image.read)
 
       # APIリクエスト用のJSONパラメータ
       params = {
@@ -34,9 +35,10 @@ module Vision
       request['Content-Type'] = 'application/json'
       response = https.request(request, params)
       response_body = JSON.parse(response.body)
-      binding.pry
+
       # APIレスポンス出力
-      if response_body['responses'][0]['safeSearchAnnotation'].to_h.values.include?(:LIKELY) || response_body['responses'][0]['safeSearchAnnotation'].to_h.values.include?(:VERY_LIKELY)
+      if response_body['responses'][0]['safeSearchAnnotation'].to_h.values.include?("LIKELY")\
+        || response_body['responses'][0]['safeSearchAnnotation'].to_h.values.include?("VERY_LIKELY")
         return false
       else
         return true
@@ -51,6 +53,9 @@ module Vision
     end
   end
 end
+
+
+
 
 =begin
 require 'base64'
