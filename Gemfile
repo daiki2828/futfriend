@@ -64,6 +64,7 @@ gem 'ransack'
 gem 'kaminari'
 gem 'dotenv-rails'
 gem 'google-cloud-vision'
+gem 'twitter'
 
 gem 'hirb'
 gem 'hirb-unicode'
