@@ -3,7 +3,7 @@
   <%= form_with model:@post, url: posts_path, local:true do |f| %>
     <div class="form-group">
       <%# 左上に文字を持っていきたい %>
-      <%= f.text_field :body, class: "col-md-8 form-control", style: "height: 200px;", placeholder: "ここに" %>
+      <%= f.text_field :body, autofocus: true, class: "col-md-8 form-control", style: "padding-bottom: 200px; padding-top: 20px;", placeholder: "ここに" %>
     </div>
     <div class="form-group">
       <%= f.text_field :hashbody, class: "col-md-8 form-control" , placeholder: "#ハッシュタグ"  %>
