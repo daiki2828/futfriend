@@ -31,7 +31,6 @@ class Public::PostsController < ApplicationController
     if params[:post][:hashbody].empty?
       tags =  Language.get_data(post_params[:body])
       @post.hashbody = tags.map{|a| "＃#{a}"}.join(" ")
-     
     end
     if @post.save
       flash[:notice] = "投稿に成功しました"
