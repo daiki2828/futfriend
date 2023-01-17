@@ -33,7 +33,7 @@
       <div class="text-center"><%= link_to "follow #{@user.followings.count}人", user_followings_path(@user), class: "text-dark", style: "font-size: 12px;" %> <%= link_to "followers #{@user.followers.count}人", user_followers_path(@user), class: "text-dark", style: "font-size: 12px;" %></div>
     </div>
   </div>
-  <div class="offset-md-1 co-md-6 mt-2"><%= @user.profile %></div>
+  <div class="offset-md-1 co-md-6 mt-2"><%= safe_join(@user.profile.split("\n"),tag(:br)) %></div>
 </div>
 <div class="col-md-8">
   <%= render 'public/posts/index', posts: @user.posts %>
