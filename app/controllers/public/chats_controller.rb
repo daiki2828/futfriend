@@ -11,7 +11,7 @@ class Public::ChatsController < ApplicationController
       @room.save
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
-      #　新しくUserRoomを作成(createは保存も同時に行われるのでsave不要)
+      
     else
       @room = user_rooms.room
       #user_roomのroomの情報を抜き出す ＝ roomのidを取得
