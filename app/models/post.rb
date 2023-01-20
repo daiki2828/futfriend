@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  
+
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
@@ -7,14 +7,14 @@ class Post < ApplicationRecord
   has_many :hashtags, through: :hashtag_posts
   has_many :notifications, dependent: :destroy
 
-  
+
   validates :body, length:{maximum:200}
-  
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
-  
-  after_create do 
+
+  after_create do
       post = Post.find_by(id: id)
       hashtags = hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
       hashtags.uniq.map do |hashtag|
@@ -22,7 +22,7 @@ class Post < ApplicationRecord
         post.hashtags << tag
     end
   end
-  
+
   before_update do
       post = Post.find_by(id: id)
       post.hashtags.clear
@@ -32,6 +32,7 @@ class Post < ApplicationRecord
         post.hashtags << tag
       end
   end
+  
   #いいね通知
   def create_notification_favorite!(current_user)
     # すでに「いいね」されているか検索
@@ -50,7 +51,7 @@ class Post < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   #コメント通知
   def create_notification_post_comment!(current_user, post_comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
@@ -66,7 +67,7 @@ class Post < ApplicationRecord
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = current_user.active_notifications.new(
       post_id: id,
-      comment_id: post_comment_id,
+      post_comment_id: post_comment_id,
       visited_id: visited_id,
       action: 'post_comment'
     )
@@ -76,6 +77,6 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-  
+
 
 end

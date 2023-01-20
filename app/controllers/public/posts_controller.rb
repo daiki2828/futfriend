@@ -5,15 +5,10 @@ class Public::PostsController < ApplicationController
 
 
   def hashtag
-    if params[:name].nil?
-      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
-    else
-      name = params[:name]
-      name = name.downcase
-      @hashtag = Hashtag.find_by(hashname: name)
-      @post = @hashtag.posts
-      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
-    end
+    name = params[:name]
+    name = name.downcase
+    @hashtag = Hashtag.find_by(hashname: name)
+    @post = @hashtag.posts
   end
 
 
