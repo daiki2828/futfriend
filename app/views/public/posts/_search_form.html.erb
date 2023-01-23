@@ -1,0 +1,23 @@
+<div class="row justify-content-between">
+    <%= search_form_for q, url: search_posts_path do |f| %>
+  <!--name_contは、あいまい検索を指定-->
+  <div class="form-group row justify-content-md-center">
+      <div class="col-md-7 col-6 mx-0">
+      <%= f.text_field :body_or_user_name_or_hashbody_cont_all, class: "form-control" %>
+      </div>
+      <div class="col-md-4 col-4 mx-0 px-0">
+      <%= f.collection_select :user_prefecture_code_eq, JpPrefecture::Prefecture.all, :code, :name, { include_blank: '都道府県' }, { class: 'custom-select' } %>
+      </div>
+      <div class="col-md-1 col-2 mx-0 px-0">
+      <%= button_tag type: "submit", class: "btn col-md-1" do %>
+        <i class="fas fa-search-plus"></i>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-1 d-none d-sm-block">
+    <%= link_to new_post_path, style: "color: black;", class: "btn" do %>
+      <i class="far fa-plus-square"></i>
+    <% end %>
+  </div>
+</div>
