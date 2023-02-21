@@ -1,10 +1,10 @@
 <div class="ml-5">
-<%= form_with model: [@post, @post_comment], local: false do |f| %>
-  <%= f.hidden_field :parent_id %>
-  <div class="form-group">
-    <%= f.text_area :comment, class: 'form-control', placeholder: "返信をここに" %>
-  </div>
-  <%= f.submit '送信', class: 'btn btn-primary rounded-pill' %>
-  <%= link_to 'キャンセル', post_path(@post), class: 'btn btn-secondary rounded-pill' %>
-<% end %>
+  <%= form_with model: [@post, @post_comment], local: false do |f| %>
+    <%= f.hidden_field :parent_id %>
+    <div class="form-group">
+      <%= f.text_area :comment, class: 'form-control', placeholder: "返信をここに" %>
+    </div>
+    <%= f.submit '送信', class: 'btn btn-primary rounded-pill' %>
+    <%= link_to 'キャンセル', post_path(@post), class: 'btn btn-secondary rounded-pill' %>
+  <% end %>
 </div>

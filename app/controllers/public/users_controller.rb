@@ -16,7 +16,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user.profile.nil?
-      @user.profile = []
+      @user.profile = ""
     end
   end
 
